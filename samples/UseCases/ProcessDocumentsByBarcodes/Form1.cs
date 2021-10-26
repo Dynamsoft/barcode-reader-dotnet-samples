@@ -419,7 +419,7 @@ namespace ProcessDocumentsByBarcodes
                     {
                         separators.Add(result.LocalizationResult.PageNumber);
                         string strBarcodeText = result.BarcodeText;
-                        if (result.Exception != "" && !result.Exception.Contains(((int)EnumErrorCode.DMERR_TRIAL_LICENSE).ToString()))
+                        if (result.Exception != null && !result.Exception.Contains(((int)EnumErrorCode.DMERR_TRIAL_LICENSE).ToString()))
                             strBarcodeText = strBarcodeText.Substring(strBarcodeText.IndexOf("]") + 2);
                         values.Add(strBarcodeText);
                     }
