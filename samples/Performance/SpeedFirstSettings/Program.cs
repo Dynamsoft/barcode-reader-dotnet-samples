@@ -14,33 +14,14 @@ namespace SpeedFirstSettings
             settings.ScaleDownThreshold = 1200;
 
             settings.BinarizationModes[0] = EnumBinarizationMode.BM_LOCAL_BLOCK;
-            settings.BinarizationModes[1] = EnumBinarizationMode.BM_SKIP;
-            settings.BinarizationModes[2] = EnumBinarizationMode.BM_SKIP;
-            settings.BinarizationModes[3] = EnumBinarizationMode.BM_SKIP;
-            settings.BinarizationModes[4] = EnumBinarizationMode.BM_SKIP;
-            settings.BinarizationModes[5] = EnumBinarizationMode.BM_SKIP;
-            settings.BinarizationModes[6] = EnumBinarizationMode.BM_SKIP;
-            settings.BinarizationModes[7] = EnumBinarizationMode.BM_SKIP;
 
             settings.LocalizationModes[0] = EnumLocalizationMode.LM_SCAN_DIRECTLY;
             settings.LocalizationModes[1] = EnumLocalizationMode.LM_SKIP;
             settings.LocalizationModes[2] = EnumLocalizationMode.LM_SKIP;
             settings.LocalizationModes[3] = EnumLocalizationMode.LM_SKIP;
-            settings.LocalizationModes[4] = EnumLocalizationMode.LM_SKIP;
-            settings.LocalizationModes[5] = EnumLocalizationMode.LM_SKIP;
-            settings.LocalizationModes[6] = EnumLocalizationMode.LM_SKIP;
-            settings.LocalizationModes[7] = EnumLocalizationMode.LM_SKIP;
 
             settings.DeblurModes[0] = EnumDeblurMode.DM_BASED_ON_LOC_BIN;
             settings.DeblurModes[1] = EnumDeblurMode.DM_THRESHOLD_BINARIZATION;
-            settings.DeblurModes[2] = EnumDeblurMode.DM_SKIP;
-            settings.DeblurModes[3] = EnumDeblurMode.DM_SKIP;
-            settings.DeblurModes[4] = EnumDeblurMode.DM_SKIP;
-            settings.DeblurModes[5] = EnumDeblurMode.DM_SKIP;
-            settings.DeblurModes[6] = EnumDeblurMode.DM_SKIP;
-            settings.DeblurModes[7] = EnumDeblurMode.DM_SKIP;
-            settings.DeblurModes[8] = EnumDeblurMode.DM_SKIP;
-            settings.DeblurModes[9] = EnumDeblurMode.DM_SKIP;
 
             settings.Timeout = 100;
             dbr.UpdateRuntimeSettings(settings);
