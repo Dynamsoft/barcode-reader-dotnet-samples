@@ -33,44 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dynamsoft.BarcodeGenerator">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net40\Dynamsoft.BarcodeGenerator.dll</HintPath>
-    </Reference>
     <Reference Include="Dynamsoft.BarcodeReader">
       <HintPath>..\..\packages\Dynamsoft.DotNet.Barcode.8.8.0\lib\net40\Dynamsoft.BarcodeReader.dll</HintPath>
-    </Reference>
-    <Reference Include="Dynamsoft.Camera">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net40\Dynamsoft.Camera.dll</HintPath>
-    </Reference>
-    <Reference Include="Dynamsoft.Forms.Viewer">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net40\Dynamsoft.Forms.Viewer.dll</HintPath>
-    </Reference>
-    <Reference Include="Dynamsoft.ImageCore">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net40\Dynamsoft.ImageCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Dynamsoft.OCR">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net40\Dynamsoft.OCR.dll</HintPath>
-    </Reference>
-    <Reference Include="Dynamsoft.PDF">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net40\Dynamsoft.PDF.dll</HintPath>
-    </Reference>
-    <Reference Include="Dynamsoft.Twain">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net40\Dynamsoft.Twain.dll</HintPath>
-    </Reference>
-    <Reference Include="Dynamsoft.WPF.Viewer">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net40\Dynamsoft.WPF.Viewer.dll</HintPath>
     </Reference>
     <Reference Include="DynamsoftCommon">
       <HintPath>..\..\packages\Dynamsoft.DotNet.Barcode.8.8.0\lib\net40\DynamsoftCommon.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
