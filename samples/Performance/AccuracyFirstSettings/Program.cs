@@ -29,7 +29,7 @@ namespace AccuracyFirstSettings
                 foreach (TextResult result in results)
                 {
                     string barcodeFormat = result.BarcodeFormat == 0 ? result.BarcodeFormatString_2 : result.BarcodeFormatString;
-                    string message = "Barcode" + i + ":" + barcodeFormat + result.BarcodeText;
+                    string message = "Barcode" + i + ":" + barcodeFormat + "," +result.BarcodeText;
                     Console.WriteLine(message);
                     i++;
                 }
