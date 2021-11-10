@@ -15,6 +15,16 @@ namespace ImageDecoding
         {
             try
             {
+                // Initialize license
+                /*
+                // By setting organizaion ID as "200001", a 7-day trial license will be used for license verification.
+                // Note that network connection is required for this license to work.
+                //
+                // When using your own license, locate the following line and specify your Organization ID.
+                // organizationID = "200001";
+                //
+                // If you don't have a license yet, you can request a trial from https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=dotnet
+                */
                 DMDLSConnectionParameters connectionInfo = BarcodeReader.InitDLSConnectionParameters();
                 connectionInfo.OrganizationID = "200001";
                 EnumErrorCode errorCode = BarcodeReader.InitLicenseFromDLS(connectionInfo, out string errorMsg);
@@ -22,13 +32,19 @@ namespace ImageDecoding
                 {
                     Console.WriteLine(errorMsg);
                 }
-
+                
+                // Create an instance of Barcode Reader
                 BarcodeReader dbr = new BarcodeReader();
              
 
                 string filePath = "../../../../images/AllSupportedBarcodeTypes.png";
                 TextResult[] results = null;
+                
+                // Configure settings
 
+                // Through PublicRuntimeSetting
+
+                // Call GetRuntimeSettings to get current runtime settings.
                 PublicRuntimeSettings settings = dbr.GetRuntimeSettings();
 
                 ImageCore ImageCore1 = new ImageCore();
