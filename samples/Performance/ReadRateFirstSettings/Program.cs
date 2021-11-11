@@ -14,7 +14,7 @@ namespace ReadRateFirstSettings
             // Parameter 1. Set expected barcode formats
             // Here the barcode scanner will try to find the maximal barcode formats.
             sts.BarcodeFormatIds = (int)EnumBarcodeFormat.BF_ALL;
-            sts.BarcodeFormatIds_2 = (int)EnumBarcodeFormat_2.BF2_DOTCODE | (int)EnumBarcodeFormat_2.BF2_POSTALCODE;
+            sts.BarcodeFormatIds_2 = (int)(EnumBarcodeFormat_2.BF2_DOTCODE | EnumBarcodeFormat_2.BF2_POSTALCODE);
 
             // Parameter 2. Set expected barcode count.
             // Here the barcode scanner will try to find 64 barcodes.
