@@ -36,7 +36,6 @@ namespace SpeedFirstSettings
             settings.LocalizationModes[3] = EnumLocalizationMode.LM_SKIP;
 
             // LM_ONED_FAST_SCAN: Localizing barcodes quickly. However, it is only for OneD barcodes. It is also recommended in interactive scenario.
-            // sts.localizationModes = new int[]{EnumLocalizationMode.LM_ONED_FAST_SCAN, 0,0,0,0,0,0,0};
         
             // Parameter 6. Reduce deblurModes setting
             // DeblurModes will improve the readability and accuracy but decrease the reading speed.
