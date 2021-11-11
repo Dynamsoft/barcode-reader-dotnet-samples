@@ -4,7 +4,6 @@ using System.IO;
 using Dynamsoft;
 using Dynamsoft.DBR;
 using System.Windows.Forms;
-using Dynamsoft.Core;
 
 
 namespace ImageDecoding
@@ -47,10 +46,8 @@ namespace ImageDecoding
                 // Call GetRuntimeSettings to get current runtime settings.
                 PublicRuntimeSettings settings = dbr.GetRuntimeSettings();
 
-                ImageCore ImageCore1 = new ImageCore();
-                ImageCore1.IO.LoadImage(filePath);
-
-                Bitmap bmp = (Bitmap)(ImageCore1.ImageBuffer.GetBitmap(ImageCore1.ImageBuffer.CurrentImageIndexInBuffer));
+                Bitmap bmp = new Bitmap(filePath);
+                
                 results = dbr.DecodeBitmap(bmp, "");
 
                 if (results != null && results.Length > 0)
