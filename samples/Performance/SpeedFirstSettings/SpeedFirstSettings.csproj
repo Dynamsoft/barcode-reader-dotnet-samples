@@ -36,9 +36,6 @@
     <Reference Include="Dynamsoft.BarcodeReader">
       <HintPath>..\..\packages\Dynamsoft.DotNet.Barcode.8.8.0\lib\net40\Dynamsoft.BarcodeReader.dll</HintPath>
     </Reference>
-    <Reference Include="Dynamsoft.ImageCore">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.TWAIN.8.3.3\lib\net5.0-windows\Dynamsoft.ImageCore.dll</HintPath>
-    </Reference>
     <Reference Include="DynamsoftCommon">
       <HintPath>..\..\packages\Dynamsoft.DotNet.Barcode.8.8.0\lib\net40\DynamsoftCommon.dll</HintPath>
     </Reference>
