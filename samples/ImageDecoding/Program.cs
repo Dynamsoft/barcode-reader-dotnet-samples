@@ -4,7 +4,6 @@ using System.IO;
 using Dynamsoft;
 using Dynamsoft.DBR;
 using System.Windows.Forms;
-using Dynamsoft.Core;
 
 
 namespace ImageDecoding
