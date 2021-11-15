@@ -12,6 +12,45 @@ namespace ImageDecoding
     {
         static void Main(string[] args)
         {
+            class ImageData
+            { 
+                public byte[] bytes;
+                public int width;
+                public int height;
+                public int format;
+            }
+             class ImageData
+        { 
+            public byte[] bytes;
+            public int width;
+            public int height;
+            public int format;
+        }
+        static byte[] getFileBytes(string filePath)
+        {
+            byte[] buffer = null;
+            FileStream fileStream = 
+            ByteArrayOutputStream bos = null;
+
+            try
+            {
+                FileStream fileStream = new FileStream(filePath);
+                ByteArrayOutputStream bos = null;
+
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+            finally
+            {
+
+            }
+        }
+        static getFileBase64(string filePath)
+        {
+
+        }
             try
             {
                 // Initialize license
