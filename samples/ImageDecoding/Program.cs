@@ -10,33 +10,73 @@ namespace ImageDecoding
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            class ImageData
-            { 
-                public byte[] bytes;
-                public int width;
-                public int height;
-                public int format;
-            }
-             class ImageData
+		class ImageData
         { 
             public byte[] bytes;
             public int width;
             public int height;
             public int format;
         }
-        static byte[] getFileBytes(string filePath)
+		
+		static ImageData cvtToImageDate(string filePath)
+		{
+			
+		}
+
+        static Bitmap getBufferedImage(string filePath)
+		{
+			try
+			{
+				Bitmap bmp = new Bitmap(filePath);
+            }
+			catch(Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+			return bmp;
+		}
+		
+		static string getFileBase64(string filePath)
+		{
+			//byte[] fileBytes = getFileBytes(filePath);
+			string encodedText = null;
+			
+			string base64string = System.Convert.ToBase64String(System.IO.File.ReadAllBytes(filePath));
+			
+			byte[] buf = System.Convert.ToBase64String(base64string);
+			
+			System.IO.File.WriteAllBytes(encodedText,buf);
+			
+			return encodedText;
+		}
+		
+		static FileStream getFileStream(string filePath)
+		{
+			try
+			{
+				FileStream fis = new FileStream(filePath,FileMode.Open,FileAccess.Read);
+			}
+			catch(Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
+			return fis;
+		}
+		
+		
+		static byte[] getFileBytes(string filePath)
         {
             byte[] buffer = null;
-            FileStream fileStream = 
-            ByteArrayOutputStream bos = null;
 
             try
             {
-                FileStream fileStream = new FileStream(filePath);
-                ByteArrayOutputStream bos = null;
-
+                FileStream fis = new FileStream(filePath,FileMode.Open,FileAccess.Read);
+                BinaryReader bos = new BinaryWriter(fis);
+				
+				long length = fis.Length;
+				byte[] tempBuffer = new byte[length];
+				bos.Read(tempBuffer,0,tempBuffer.Length);
+				buffer = bos.toByteArray();
             }
             catch (Exception exp)
             {
@@ -44,13 +84,56 @@ namespace ImageDecoding
             }
             finally
             {
-
+				if(null!=bos){
+					try{
+						bos.Close();
+					}
+					catch(Exception exp)
+					{
+						Console.WriteLine(exp.Message);
+					}
+				}
+				if(null!=fis){
+					try
+					{
+						fis.Close();
+					}
+					catch(Exception exp)
+					{
+						Console.WriteLine(exp.Message);
+					}
+				}
             }
+			return buffer;
         }
-        static getFileBase64(string filePath)
+		
+		static int chooseNumber()
+		{
+			Console.WriteLine();
+			Console.WriteLine(">> Choose a number for diffent decoding interfaces:");
+			Console.WriteLine("   0: exit program");
+			Console.WriteLine("   1: decodeFile");
+			Console.WriteLine("   2: decodeBase64String");
+			Console.WriteLine("   3: decodeBufferedImage");
+			Console.WriteLine("   4: decodeFileInMemory-file bytes");
+			Console.WriteLine("   5: decodeFileInMemory-input stream");
+			Console.WriteLine("   6: decodeBuffer");
+			
+			FileStream fs = new FileStream(filePath,FileMode.OpenOrCreate);
+			//BufferedStream cin = fileStream.Write(bt);
+				
+			try
+			{
+				int iNum =Console.ReadLine();
+			}
+			catch(Exception exp)
+			{
+				Console.WriteLine(exp.Message);
+			}
+			return iNum;
+		}
+        static void Main(string[] args)
         {
-
-        }
             try
             {
                 // Initialize license
@@ -85,25 +168,83 @@ namespace ImageDecoding
                 // Call GetRuntimeSettings to get current runtime settings.
                 PublicRuntimeSettings settings = dbr.GetRuntimeSettings();
 
-                Bitmap bmp = new Bitmap(filePath);
-                
-                results = dbr.DecodeBitmap(bmp, "");
-
-                if (results != null && results.Length > 0)
-                {
-                    int i = 1;
-                    foreach (TextResult result in results)
-                    {
-                        string barcodeFormat = result.BarcodeFormat == 0 ? result.BarcodeFormatString_2 : result.BarcodeFormatString;
-                        string message = "Barcode" + i + ":" + barcodeFormat + "," + result.BarcodeText;
-                        Console.WriteLine(message);
-                        i++;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("No data detected.");
-                }
+				while(true)
+				{
+					int iNum = -1;
+					while(true)
+					{
+						iNum = chooseNumber();
+						if(iNum < 0 || iNum > 6)
+							Console.WriteLine("Please choose a valid number.");
+						else
+							break;
+					}
+					if(0 == iNum)
+						break;
+					
+					switch(iNum)
+					{
+						case 1: {
+	            		//Decoding with file path
+	            		results = dbr.decodeFile(filePath, "");
+	            		break;
+						}
+						case 2: {
+							string base64Str = getFileBase64(filePath);
+							
+							//Decoding with base64 encoded file
+							results = dbr.decodeBase64String(base64Str, "");
+							break;
+						}         	
+						case 3: {
+							Bitmap bufferedImage = getBufferedImage(filePath);
+							
+							//Decoding with buffered image
+							results = dbr.decodeBufferedImage(bufferedImage, "");
+							break;
+						}
+						case 4: {         		
+							byte[] bytes = getFileBytes(filePath);
+							
+							//Decoding with file bytes
+							results = dbr.decodeFileInMemory(bytes, "");
+							break;
+						}
+						case 5: {
+							FileStream fs = getFileStream(filePath);
+							
+							//Decoding with input stream
+							results = dbr.decodeFileInMemory(fs, "");
+							break;
+						}
+						case 6: {
+							ImageData img = cvtToImageData(filePath);
+							
+							//Decoding with raw buffer
+							results = dbr.decodeBuffer(img.bytes, img.width, img.height, img.stride, img.format, "");
+							break;
+						}
+						default:
+							break;	
+					}
+					
+					// Output the barcode format and barcode text.
+					if (results != null && results.Length > 0)
+					{
+						int i = 1;
+						foreach (TextResult result in results)
+						{
+							string barcodeFormat = result.BarcodeFormat == 0 ? result.BarcodeFormatString_2 : result.BarcodeFormatString;
+							string message = "Barcode" + i + ":" + barcodeFormat + "," + result.BarcodeText;
+							Console.WriteLine(message);
+							i++;
+						}
+					}
+					else
+					{
+						Console.WriteLine("No data detected.");
+					}
+				}   
             }
             catch (Exception exp)
             {
