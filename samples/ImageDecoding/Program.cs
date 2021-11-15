@@ -18,9 +18,26 @@ namespace ImageDecoding
             public int format;
         }
 		
-		static ImageData cvtToImageDate(string filePath)
+		static BitmapData cvtToImageDate(string filePath)
 		{
 			
+			Bitmap bmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+			
+			int stride = ((24 * image.getWidth() + 31) / 32) * 4;
+			
+			BinaryWriter output = new BinaryWriter(bmp.getHeight() * stride);
+			
+			
+			
+			
+			BitmapData bmpData = bmp.LockBits(new System.Drawing.Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+			bmpData.Width = bmp.;
+			bmpData.Height = bmp.;
+			bmpData.Bytes = ConvertToByte(output);
+			bmpData.Stride = stride;
+			bmpData.Format = EnumImagePixelFormat.IPF_BGR_888;
+			
+			return bmpData;
 		}
 
         static Bitmap getBufferedImage(string filePath)
