@@ -19,13 +19,17 @@ This repository contains multiple samples that demonstrates how to use the <a hr
 | GeneralSettings | This sample demonstrates how to configure general settings and read barcodes from an image file. |
 | ProcessDocumentsByBarcodes | This sample demonstrates how to renaming, splitting or classifying a batch of documents using barcodes result. |
 | DecodeFromScannerAndWebcam | This sample demonstrates how to read barcodes from scanner, webcam and local files. |
+| ImageDecoding | This sample demonstrates how to decode images in various format (including Disk File/File Bytes in Memory/Raw Buffer/Base64 String/Bitmap) when using Dynamsoft Barcode Reader. |
+| SpeedFirstSettings | This sample demonstrates how to configure Dynamsoft Barcode Reader to read barcodes as fast as possible. The downside is that read-rate and accuracy might be affected. |
+| ReadRateFirstSettings | This sample demonstrates how to configure Dynamsoft Barcode Reader to read as many barcodes as possible at one time. The downside is that speed and accuracy might be affected. It is recommended to apply these configurations when decoding multiple barcodes from a single image. |
+| AccuracyFirstSettings | This sample demonstrates how to configure Dynamsoft Barcode Reader to read barcodes as accurately as possible. The downside is that speed and read-rate might be affected. It is recommended to apply these configurations when misreading is unbearable. |
 
 
 ## License
 
 The library requires a license to work, you use the API InitLicenseFromDLS to tell the program where to fetch your license.
 
-If the Organizaion ID is not specified or set as "200001", a 7-day (public) trial license will be used by default which is the case in these samples.
+If the Organization ID is not specified or set as "200001", a 7-day (public) trial license will be used by default which is the case in these samples.
 
 Note that network connection is required for this license to work.
 
