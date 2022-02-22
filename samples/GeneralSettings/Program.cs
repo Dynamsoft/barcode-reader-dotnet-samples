@@ -12,7 +12,7 @@ namespace GeneralSettings
             {
                 // 1. Initialize license
                 /*
-                // By setting organization ID as "200001", a 7-day trial license will be used for license verification.
+                // By setting organization ID as "200001", a free public trial license will be used for license verification.
                 // Note that network connection is required for this license to work.
                 //
                 // When using your own license, locate the following line and specify your Organization ID.
@@ -54,7 +54,7 @@ namespace GeneralSettings
 
                 // 3.1.3 Call UpdateRuntimeSettings to apply above settings
                 dbr.UpdateRuntimeSettings(settings);
-
+                
                 // 3.2 Through JSON template
                 //string errorMessage;
                 //dbr.InitRuntimeSettingsWithString("{\"ImageParameter\":{\"Name\":\"S1\",\"RegionDefinitionNameArray\":[\"R1\"]},\"RegionDefinition\":{\"Name\":\"R1\",\"BarcodeFormatIds\":[\"BF_PDF417\"],\"BarcodeFormatIds_2\":[\"BF2_POSTALCODE\"],\"ExpectedBarcodesCount\":2,\"Left\":0,\"Right\":100,\"Top\":50,\"Bottom\":100,\"MeasuredByPercentage\":1}}", EnumConflictMode.CM_IGNORE, out errorMessage);
