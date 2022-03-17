@@ -10,19 +10,10 @@ namespace GeneralSettings
         {
             try
             {
-                // 1. Initialize license
-                /*
-                // By setting organization ID as "200001", a free public trial license will be used for license verification.
-                // Note that network connection is required for this license to work.
-                //
-                // When using your own license, locate the following line and specify your Organization ID.
-                // organizationID = "200001";
-                //
-                // If you don't have a license yet, you can request a trial from https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=dotnet
-                */
-                DMDLSConnectionParameters connectionInfo = BarcodeReader.InitDLSConnectionParameters();
-                connectionInfo.OrganizationID = "200001";
-                EnumErrorCode errorCode = BarcodeReader.InitLicenseFromDLS(connectionInfo, out string errorMsg);
+                // 1.Initialize license.
+		// The string "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" here is a free public trial license. Note that network connection is required for this license to work.
+	        // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=github&package=dotnet
+                EnumErrorCode errorCode = BarcodeReader.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out string errorMsg);
                 if (errorCode != EnumErrorCode.DBR_SUCCESS)
                 {
                     Console.WriteLine(errorMsg);
