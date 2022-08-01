@@ -14,10 +14,11 @@ namespace ImageDecoding
         {
             try
             {
-                // 1.Initialize license.
-		// The string "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" here is a free public trial license. Note that network connection is required for this license to work.
-	        // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=github&package=dotnet
-                EnumErrorCode errorCode = BarcodeReader.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out string errorMsg);
+                // Initialize license.
+                // The string "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" here is a free public trial license. Note that network connection is required for this license to work.
+                // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=github&package=dotnet
+                string errorMsg;
+                EnumErrorCode errorCode = BarcodeReader.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out errorMsg);
                 if (errorCode != EnumErrorCode.DBR_SUCCESS)
                 {
                     Console.WriteLine(errorMsg);
@@ -30,13 +31,6 @@ namespace ImageDecoding
                 string filePath = "../../../../images/AllSupportedBarcodeTypes.png";
                 TextResult[] results = null;
                 
-                // Configure settings
-
-                // Through PublicRuntimeSetting
-
-                // Call GetRuntimeSettings to get current runtime settings.
-                PublicRuntimeSettings settings = dbr.GetRuntimeSettings();
-
                 Bitmap bmp = new Bitmap(filePath);
                 
                 results = dbr.DecodeBitmap(bmp, "");
@@ -47,7 +41,7 @@ namespace ImageDecoding
                     foreach (TextResult result in results)
                     {
                         string barcodeFormat = result.BarcodeFormat == 0 ? result.BarcodeFormatString_2 : result.BarcodeFormatString;
-                        string message = "Barcode" + i + ":" + barcodeFormat + "," + result.BarcodeText;
+                        string message = "Barcode " + i + ": " + barcodeFormat + ", " + result.BarcodeText;
                         Console.WriteLine(message);
                         i++;
                     }
