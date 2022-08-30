@@ -40,7 +40,7 @@ namespace ImageDecoding
                     int i = 1;
                     foreach (TextResult result in results)
                     {
-                        string barcodeFormat = result.BarcodeFormat == 0 ? result.BarcodeFormatString_2 : result.BarcodeFormatString;
+                        string barcodeFormat = result.BarcodeFormatString;
                         string message = "Barcode " + i + ": " + barcodeFormat + ", " + result.BarcodeText;
                         Console.WriteLine(message);
                         i++;

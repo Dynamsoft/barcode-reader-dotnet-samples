@@ -66,10 +66,7 @@ namespace GeneralSettings
                             Console.WriteLine("Result " + (i + 1).ToString() + ":");
 
                             // 5. Get format of each barcode
-                            if (results[i].BarcodeFormat != EnumBarcodeFormat.BF_NULL)
-                                Console.WriteLine("    Barcode Format: " + results[i].BarcodeFormatString);
-                            else
-                                Console.WriteLine("    Barcode Format: " + results[i].BarcodeFormatString_2);
+                            Console.WriteLine("    Barcode Format: " + results[i].BarcodeFormatString);
 
                             // 6. Get text result of each barcode
                             Console.WriteLine("    Barcode Text: " + results[i].BarcodeText);

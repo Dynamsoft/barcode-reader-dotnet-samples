@@ -1659,10 +1659,7 @@ namespace DecodeFromScannerAndWebcam
                     Rectangle tempRectangle = ConvertLocationPointToRect(textResult[i].LocalizationResult.ResultPoints);
                     strResult += string.Format("  Barcode: {0}\r\n", (i + 1));
                     string strFormatString = "";
-                    if (textResult[i].BarcodeFormat == EnumBarcodeFormat.BF_NULL)
-                        strFormatString = textResult[i].BarcodeFormatString_2;
-                    else
-                        strFormatString = textResult[i].BarcodeFormatString;
+                    strFormatString = textResult[i].BarcodeFormatString;
                     strResult += string.Format("    Type: {0}\r\n", strFormatString);
                     strResult = AddBarcodeText(strResult, textResult[i].BarcodeText);
                     strResult += string.Format("    Hex Data: {0}\r\n", ToHexString(textResult[i].BarcodeBytes));
