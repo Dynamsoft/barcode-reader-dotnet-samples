@@ -80,7 +80,7 @@ namespace SpeedFirstSettings
                 int i = 1;
                 foreach (TextResult result in results)
                 {
-                    string barcodeFormat = result.BarcodeFormat == 0 ? result.BarcodeFormatString_2 : result.BarcodeFormatString;
+                    string barcodeFormat = result.BarcodeFormatString;
                     Console.WriteLine("Barcode {0}:{1},{2}", i, barcodeFormat, result.BarcodeText);
                     i++;
                 }
