@@ -56,7 +56,7 @@ namespace ImageDecoding
                 Console.WriteLine(exp.Message);
             }
             Console.WriteLine("Press any key to quit...");
-            console.Read();
+            Console.Read();
         }
     }
 }
