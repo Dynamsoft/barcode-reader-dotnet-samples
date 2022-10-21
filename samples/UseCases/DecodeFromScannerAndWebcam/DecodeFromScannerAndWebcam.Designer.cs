@@ -1875,8 +1875,7 @@ namespace DecodeFromScannerAndWebcam
             this.labelWebcamNote.Name = "labelWebcamNote";
             this.labelWebcamNote.Size = new System.Drawing.Size(275, 80);
             this.labelWebcamNote.TabIndex = 0;
-            this.labelWebcamNote.Text = "Note: Please place a barcode in front of \r\nyour webcam and then click “Read Barco" +
-    "de” \r\nbutton. It will decode barcodes from camera \r\nstream directly.";
+            this.labelWebcamNote.Text = "Note: Please place a barcode in front of your webcam and then click \"Read Barcode\" button. It will decode barcodes from camera stream directly.";
             this.labelWebcamNote.Click += new System.EventHandler(this.labelWebcamNote_Click);
             // 
             // lblWebCamSrc
