@@ -21,18 +21,20 @@ namespace GeneralSettings
                 }
 
                 // 2. Create an instance of Barcode Reader
-                BarcodeReader dbr = new BarcodeReader();
+                BarcodeReader reader = new BarcodeReader();
 
                 // 3. Configure settings
 
                 // 3.1 Through PublicRuntimeSetting
 
                 // 3.1.1 Call GetRuntimeSettings to get current runtime settings. 
-                PublicRuntimeSettings settings = dbr.GetRuntimeSettings();
+                PublicRuntimeSettings settings = reader.GetRuntimeSettings();
 
                 // 3.1.2 Configure one or more specific settings
                 // In this sample, we configure three settings: 
                 // try to finnd PDF 417 and DotCode
+                    // The barcode format our library will search for is composed of BarcodeFormat group 1 and BarcodeFormat group 2.
+                    // So you need to specify the barcode format in group 1 and group 2 individually.
                 settings.BarcodeFormatIds = (int)EnumBarcodeFormat.BF_PDF417;
                 settings.BarcodeFormatIds_2 = (int)EnumBarcodeFormat_2.BF2_DOTCODE;
                 // try to find 2 barcodes
@@ -45,11 +47,11 @@ namespace GeneralSettings
                 settings.Region.RegionMeasuredByPercentage = 1;
 
                 // 3.1.3 Call UpdateRuntimeSettings to apply above settings
-                dbr.UpdateRuntimeSettings(settings);
+                reader.UpdateRuntimeSettings(settings);
                 
                 // 3.2 Through JSON template
                 //string errorMessage;
-                //dbr.InitRuntimeSettingsWithString("{\"ImageParameter\":{\"Name\":\"S1\",\"RegionDefinitionNameArray\":[\"R1\"]},\"RegionDefinition\":{\"Name\":\"R1\",\"BarcodeFormatIds\":[\"BF_PDF417\"],\"BarcodeFormatIds_2\":[\"BF2_POSTALCODE\"],\"ExpectedBarcodesCount\":2,\"Left\":0,\"Right\":100,\"Top\":50,\"Bottom\":100,\"MeasuredByPercentage\":1}}", EnumConflictMode.CM_IGNORE, out errorMessage);
+                //reader.InitRuntimeSettingsWithString("{\"ImageParameter\":{\"Name\":\"S1\",\"RegionDefinitionNameArray\":[\"R1\"]},\"RegionDefinition\":{\"Name\":\"R1\",\"BarcodeFormatIds\":[\"BF_PDF417\"],\"BarcodeFormatIds_2\":[\"BF2_POSTALCODE\"],\"ExpectedBarcodesCount\":2,\"Left\":0,\"Right\":100,\"Top\":50,\"Bottom\":100,\"MeasuredByPercentage\":1}}", EnumConflictMode.CM_IGNORE, out errorMessage);
 
 
                 try
@@ -57,7 +59,7 @@ namespace GeneralSettings
                     TextResult[] results = null;
 
                     // 4. Read barcode from an image file
-                    results = dbr.DecodeFile("../../../../images/AllSupportedBarcodeTypes.png", "");
+                    results = reader.DecodeFile("../../../../images/AllSupportedBarcodeTypes.png", "");
 
                     if (results != null && results.Length > 0)
                     {
@@ -81,6 +83,7 @@ namespace GeneralSettings
                 {
                     Console.WriteLine(exp.Message);
                 }
+                reader.Dispose();
             }
             catch (Exception exp)
             {
