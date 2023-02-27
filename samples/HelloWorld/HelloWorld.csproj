@@ -36,11 +36,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dynamsoft.BarcodeReader, Version=9.4.0.823, Culture=neutral, PublicKeyToken=ad0967c36e09320a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dynamsoft.DotNet.Barcode.9.4.0\lib\net40\Dynamsoft.BarcodeReader.dll</HintPath>
+    <Reference Include="Dynamsoft.BarcodeReader, Version=9.6.10.1215, Culture=neutral, PublicKeyToken=ad0967c36e09320a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dynamsoft.DotNet.Barcode.9.6.10\lib\net40\Dynamsoft.BarcodeReader.dll</HintPath>
     </Reference>
     <Reference Include="DynamsoftCommon, Version=1.1.0.0, Culture=neutral, PublicKeyToken=ad0967c36e09320a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dynamsoft.DotNet.Barcode.9.4.0\lib\net40\DynamsoftCommon.dll</HintPath>
+      <HintPath>..\packages\Dynamsoft.DotNet.Barcode.9.6.10\lib\net40\DynamsoftCommon.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -53,11 +53,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Dynamsoft.DotNet.Barcode.9.4.0\build\Dynamsoft.DotNet.Barcode.targets" Condition="Exists('..\packages\Dynamsoft.DotNet.Barcode.9.4.0\build\Dynamsoft.DotNet.Barcode.targets')" />
+  <Import Project="..\packages\Dynamsoft.DotNet.Barcode.9.6.10\build\Dynamsoft.DotNet.Barcode.targets" Condition="Exists('..\packages\Dynamsoft.DotNet.Barcode.9.6.10\build\Dynamsoft.DotNet.Barcode.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Dynamsoft.DotNet.Barcode.9.4.0\build\Dynamsoft.DotNet.Barcode.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Dynamsoft.DotNet.Barcode.9.4.0\build\Dynamsoft.DotNet.Barcode.targets'))" />
+    <Error Condition="!Exists('..\packages\Dynamsoft.DotNet.Barcode.9.6.10\build\Dynamsoft.DotNet.Barcode.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Dynamsoft.DotNet.Barcode.9.6.10\build\Dynamsoft.DotNet.Barcode.targets'))" />
   </Target>
 </Project>
