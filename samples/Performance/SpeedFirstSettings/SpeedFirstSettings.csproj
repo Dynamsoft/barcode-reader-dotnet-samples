@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dynamsoft.BarcodeReader">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.Barcode.9.6.10\lib\net40\Dynamsoft.BarcodeReader.dll</HintPath>
+      <HintPath>..\..\packages\Dynamsoft.DotNet.Barcode.9.6.20\lib\net40\Dynamsoft.BarcodeReader.dll</HintPath>
     </Reference>
     <Reference Include="DynamsoftCommon">
-      <HintPath>..\..\packages\Dynamsoft.DotNet.Barcode.9.6.10\lib\net40\DynamsoftCommon.dll</HintPath>
+      <HintPath>..\..\packages\Dynamsoft.DotNet.Barcode.9.6.20\lib\net40\DynamsoftCommon.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />

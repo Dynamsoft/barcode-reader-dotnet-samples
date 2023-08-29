@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
 using DecodeFromScannerAndWebcam.Properties;
 using Dynamsoft;
@@ -102,7 +103,7 @@ namespace DecodeFromScannerAndWebcam
 
             // 1.Initialize license.
 		    // The string "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" here is a free public trial license. Note that network connection is required for this license to work.
-	        // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=github&package=dotnet
+	        // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?architecture=dcv&product=dbr&utm_source=github&package=dotnet
             string errorMsg;
             EnumErrorCode errorCode = BarcodeReader.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out errorMsg);
             if (errorCode != EnumErrorCode.DBR_SUCCESS)
@@ -110,14 +111,23 @@ namespace DecodeFromScannerAndWebcam
                 MessageBox.Show(errorMsg, "License initiation failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            mBarcodeReader = new BarcodeReader();
+            mBarcodeReader = BarcodeReader.GetInstance();
+            if (mBarcodeReader == null)
+            {
+                MessageBox.Show("Get instance failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.GetCurrentProcess().Kill();
+            }
             mPostShowFrameResults = new PostShowFrameResultsHandler(this.postShowFrameResults);
             mNormalRuntimeSettings = mBarcodeReader.GetRuntimeSettings();
             UpdateBarcodeFormat();
             toolTipExport.SetToolTip(btnExportSettings, "output settings");
 
         }
-
+        ~DecodeFromScannerAndWebcam()
+        {
+            if (mBarcodeReader != null)
+                mBarcodeReader.Recycle();
+        }
         #region form relevant
 
         /// <summary>

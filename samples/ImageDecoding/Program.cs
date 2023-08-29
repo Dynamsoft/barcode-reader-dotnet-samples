@@ -229,7 +229,7 @@ namespace ImageDecoding
             {
                 // Initialize license.
                 // The string "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" here is a free public trial license. Note that network connection is required for this license to work.
-                // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=github&package=dotnet
+                // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?architecture=dcv&product=dbr&utm_source=github&package=dotnet
                 string errorMsg;
                 EnumErrorCode errorCode = BarcodeReader.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out errorMsg);
                 if (errorCode != EnumErrorCode.DBR_SUCCESS)
@@ -238,7 +238,11 @@ namespace ImageDecoding
                 }
 
                 // Create an instance of Barcode Reader
-                BarcodeReader dbr = new BarcodeReader();
+                BarcodeReader dbr = BarcodeReader.GetInstance();
+                if (dbr == null)
+                {
+                    throw new Exception("Get Instance Failed.");
+                }
 
 
                 string filePath = "../../../../images/AllSupportedBarcodeTypes.png";
@@ -309,6 +313,7 @@ namespace ImageDecoding
                         Console.WriteLine("No data detected.");
                     }
                 }
+                dbr.Recycle();
             }
             catch (Exception exp)
             {

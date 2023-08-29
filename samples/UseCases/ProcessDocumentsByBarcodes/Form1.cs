@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using Dynamsoft;
 using Dynamsoft.DBR;
@@ -30,7 +31,7 @@ namespace ProcessDocumentsByBarcodes
 
             // 1.Initialize license.
 		    // The string "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" here is a free public trial license. Note that network connection is required for this license to work.
-	        // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=github&package=dotnet
+	        // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?architecture=dcv&product=dbr&utm_source=github&package=dotnet
             string errorMsg;
             EnumErrorCode errorCode = BarcodeReader.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out errorMsg);
             if (errorCode != EnumErrorCode.DBR_SUCCESS)
@@ -39,9 +40,20 @@ namespace ProcessDocumentsByBarcodes
             }
 
             // Create an instance of Barcode Reader
-            barcodeReader = new BarcodeReader();
+            barcodeReader = BarcodeReader.GetInstance();
+            if (barcodeReader == null)
+            {
+                MessageBox.Show("Get instance failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.GetCurrentProcess().Kill();
+            }
+
         }
 
+        ~Form1()
+        {
+            if (barcodeReader != null)
+                barcodeReader.Recycle();
+        }
         private void InitialDefaultValue()
         {
             string strDesktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>decode_with_concurrent_instance</title>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+    <input type="file">
+    <div class="result"></div>
+    <script>
+        const resultDiv = document.querySelector(".result");
+        document.querySelector("input").addEventListener("change", (e) => {
+            console.log(e.target.files[0]);
+            const fd = new FormData();
+            fd.append('imgBinary', e.target.files[0]);
+            axios.post("./ReadBarcode.ashx", fd).then((response) => {
+                resultDiv.innerText = "";
+                for (let i = 0; i < response.data.results.length; i++) {
+                    resultDiv.innerText += response.data.results[i].BarcodeFormatString + " : " + response.data.results[i].BarcodeText + "\n";
+                }
+                console.log(response);
+            })
+        })
+        
+    </script>
+</body>
+</html>
