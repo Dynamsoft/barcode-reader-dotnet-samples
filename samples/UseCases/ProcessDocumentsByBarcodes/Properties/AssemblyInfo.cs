@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Dynamsoft")]
 [assembly: AssemblyProduct("ProcessDocumentsByBarcodes")]
-[assembly: AssemblyCopyright("Copyright © Dynamsoft Corporation 2016")]
+[assembly: AssemblyCopyright("Copyright © Dynamsoft Corporation 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
