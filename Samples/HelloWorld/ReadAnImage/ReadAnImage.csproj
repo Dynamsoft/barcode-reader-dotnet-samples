@@ -9,7 +9,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="10.2.1000" />
+    <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="10.2.1100" />
     
     
     
