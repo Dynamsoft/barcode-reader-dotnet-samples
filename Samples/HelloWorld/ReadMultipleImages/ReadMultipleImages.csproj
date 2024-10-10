@@ -8,12 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="10.2.1200" />
-    
-    
-    
-    
-    
+	  <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="10.4.2000" />
   </ItemGroup>
 
 </Project>
