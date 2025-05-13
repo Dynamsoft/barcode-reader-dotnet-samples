@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadAnImage_framework", "ReadAnImage\ReadAnImage_framework.csproj", "{FF5D3AD8-8E8E-4157-8B5C-05810B757AC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMultipleImages_framework", "ReadMultipleImages\ReadMultipleImages_framework.csproj", "{2D8A42E9-063F-433B-8E6D-489BFC82211D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF5D3AD8-8E8E-4157-8B5C-05810B757AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF5D3AD8-8E8E-4157-8B5C-05810B757AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF5D3AD8-8E8E-4157-8B5C-05810B757AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF5D3AD8-8E8E-4157-8B5C-05810B757AC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D8A42E9-063F-433B-8E6D-489BFC82211D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8A42E9-063F-433B-8E6D-489BFC82211D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8A42E9-063F-433B-8E6D-489BFC82211D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8A42E9-063F-433B-8E6D-489BFC82211D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

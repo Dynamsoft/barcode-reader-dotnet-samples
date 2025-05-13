@@ -2,18 +2,22 @@
 using Dynamsoft.Core;
 using Dynamsoft.CVR;
 using Dynamsoft.License;
+using System;
+
 namespace ReadAnImage
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            System.IO.Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+
             int errorCode = 1;
             string errorMsg;
 
             // Initialize license.
-            // You can request and extend a trial license from https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=dotnet
             // The string 'DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9' here is a free public trial license. Note that network connection is required for this license to work.
+            // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=dotnet
             errorCode = LicenseManager.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out errorMsg);
 
             if (errorCode != (int)EnumErrorCode.EC_OK && errorCode != (int)EnumErrorCode.EC_LICENSE_CACHE_USED)
@@ -22,31 +26,43 @@ namespace ReadAnImage
             }
             else
             {
-                using (CaptureVisionRouter cvr = new CaptureVisionRouter())
+                using (CaptureVisionRouter cvRouter = new CaptureVisionRouter())
                 {
                     string imageFile = "../../../../../../Images/GeneralBarcodes.png";
-                    CapturedResult? result = cvr.Capture(imageFile, PresetTemplate.PT_READ_BARCODES);
-                    if (result == null)
+                    CapturedResult[] results = cvRouter.CaptureMultiPages(imageFile, PresetTemplate.PT_READ_BARCODES);
+                    if (results == null)
                     {
                         Console.WriteLine("No barcode detected.");
                     }
                     else
                     {
-                        if (result.GetErrorCode() != 0)
+                        for (int index = 0; index < results.Length; index++)
                         {
-                            Console.WriteLine("Error: " + result.GetErrorCode() + ", " + result.GetErrorString());
-                        }
-
-                        DecodedBarcodesResult? barcodesResult = result.GetDecodedBarcodesResult();
-                        if (barcodesResult != null)
-                        {
-                            BarcodeResultItem[] items = barcodesResult.GetItems();
-                            Console.WriteLine("Decoded " + items.Length + " barcodes");
-                            foreach (BarcodeResultItem barcodeItem in items)
+                            CapturedResult result = results[index];
+                            if (result.GetErrorCode() == (int)EnumErrorCode.EC_UNSUPPORTED_JSON_KEY_WARNING)
                             {
-                                Console.WriteLine("Result " + (Array.IndexOf(items, barcodeItem) + 1));
-                                Console.WriteLine("Barcode Format: " + barcodeItem.GetFormatString());
-                                Console.WriteLine("Barcode Text: " + barcodeItem.GetText());
+                                Console.WriteLine("Warning: " + result.GetErrorCode() + ", " + result.GetErrorString());
+                            }
+                            if (result.GetErrorCode() != (int)EnumErrorCode.EC_OK)
+                            {
+                                Console.WriteLine("Error: " + result.GetErrorCode() + ", " + result.GetErrorString());
+                            }
+                            DecodedBarcodesResult barcodesResult = result.GetDecodedBarcodesResult();
+                            BarcodeResultItem[] items = barcodesResult != null ? barcodesResult.GetItems() : null;
+                            if (items == null || items.Length == 0)
+                            {
+                                Console.WriteLine("Page-" + (index + 1) + " No barcode detected.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Page-" + (index + 1) + " Decoded " + items.Length + " barcodes");
+                                for (int i = 0; i < items.Length; i++)
+                                {
+                                    BarcodeResultItem barcodeResultItem = items[i];
+                                    Console.WriteLine("Result " + (i + 1));
+                                    Console.WriteLine("Barcode Format: " + barcodeResultItem.GetFormatString());
+                                    Console.WriteLine("Barcode Text: " + barcodeResultItem.GetText());
+                                }
                             }
                         }
                     }

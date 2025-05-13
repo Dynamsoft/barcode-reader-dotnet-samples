@@ -3,6 +3,7 @@ using Dynamsoft.CVR;
 using Dynamsoft.DBR;
 using Dynamsoft.License;
 using Dynamsoft.Utility;
+using System;
 
 namespace ReadMultipleImages
 {
@@ -10,9 +11,13 @@ namespace ReadMultipleImages
     {
         public override void OnDecodedBarcodesReceived(DecodedBarcodesResult result)
         {
-            FileImageTag? tag = (FileImageTag?)result.GetOriginalImageTag();
+            FileImageTag tag = (FileImageTag)result.GetOriginalImageTag();
             Console.WriteLine("File: " + tag.GetFilePath());
-            if (result.GetErrorCode() != (int)EnumErrorCode.EC_OK)
+            if (result.GetErrorCode() == (int)EnumErrorCode.EC_UNSUPPORTED_JSON_KEY_WARNING)
+            {
+                Console.WriteLine("Warning: " + result.GetErrorCode() + ", " + result.GetErrorString());
+            }
+            else if (result.GetErrorCode() != (int)EnumErrorCode.EC_OK)
             {
                 Console.WriteLine("Error: " + result.GetErrorString());
             }
@@ -20,9 +25,10 @@ namespace ReadMultipleImages
             {
                 BarcodeResultItem[] items = result.GetItems();
                 Console.WriteLine("Decoded " + items.Length + " barcodes");
-                foreach (BarcodeResultItem item in items)
+                for (int i = 0; i < items.Length; i++)
                 {
-                    Console.WriteLine("Result " + (Array.IndexOf(items, item) + 1));
+                    BarcodeResultItem item = items[i];
+                    Console.WriteLine("Result " + (i + 1));
                     Console.WriteLine("Barcode Format: " + item.GetFormatString());
                     Console.WriteLine("Barcode Text: " + item.GetText());
                 }
@@ -32,19 +38,19 @@ namespace ReadMultipleImages
     }
     class MyImageSourceStateListener : IImageSourceStateListener
     {
-        private CaptureVisionRouter? cvr = null;
-        public MyImageSourceStateListener(CaptureVisionRouter cvr)
+        private CaptureVisionRouter cvRouter = null;
+        public MyImageSourceStateListener(CaptureVisionRouter cvRouter)
         {
-            this.cvr = cvr;
+            this.cvRouter = cvRouter;
         }
 
         public void OnImageSourceStateReceived(EnumImageSourceState state)
         {
             if (state == EnumImageSourceState.ISS_EXHAUSTED)
             {
-                if (cvr != null)
+                if (cvRouter != null)
                 {
-                    cvr.StopCapturing();
+                    cvRouter.StopCapturing();
                 }
             }
         }
@@ -53,12 +59,14 @@ namespace ReadMultipleImages
     {
         static void Main(string[] args)
         {
+            System.IO.Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+
             int errorCode = 1;
             string errorMsg;
 
             // Initialize license.
-            // You can request and extend a trial license from https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=dotnet
             // The string 'DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9' here is a free public trial license. Note that network connection is required for this license to work.
+            // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=dotnet
             errorCode = LicenseManager.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out errorMsg);
             if (errorCode != (int)EnumErrorCode.EC_OK && errorCode != (int)EnumErrorCode.EC_LICENSE_CACHE_USED)
             {
@@ -66,19 +74,19 @@ namespace ReadMultipleImages
             }
             else
             {
-                using (CaptureVisionRouter cvr = new CaptureVisionRouter())
+                using (CaptureVisionRouter cvRouter = new CaptureVisionRouter())
                 using (DirectoryFetcher fetcher = new DirectoryFetcher())
                 {
                     fetcher.SetDirectory("../../../../../../Images");
-                    cvr.SetInput(fetcher);
+                    cvRouter.SetInput(fetcher);
 
                     CapturedResultReceiver receiver = new MyCapturedResultReceiver();
-                    cvr.AddResultReceiver(receiver);
+                    cvRouter.AddResultReceiver(receiver);
 
-                    MyImageSourceStateListener listener = new MyImageSourceStateListener(cvr);
-                    cvr.AddImageSourceStateListener(listener);
+                    MyImageSourceStateListener listener = new MyImageSourceStateListener(cvRouter);
+                    cvRouter.AddImageSourceStateListener(listener);
 
-                    errorCode = cvr.StartCapturing(PresetTemplate.PT_READ_BARCODES, true, out errorMsg);
+                    errorCode = cvRouter.StartCapturing(PresetTemplate.PT_READ_BARCODES, true, out errorMsg);
                     if (errorCode != (int)EnumErrorCode.EC_OK)
                     {
                         Console.WriteLine("error: " + errorMsg);
