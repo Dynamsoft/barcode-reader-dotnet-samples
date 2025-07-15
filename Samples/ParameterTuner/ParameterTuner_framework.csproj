@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A90EB05C-9715-4774-985E-BEC9FED7B6DD}</ProjectGuid>
+    <ProjectGuid>{A359564C-F8DB-4D3C-8CC7-346DEF931838}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GeneralSettings_framework</RootNamespace>
-    <AssemblyName>GeneralSettings_framework</AssemblyName>
+    <RootNamespace>ParameterTuner_framework</RootNamespace>
+    <AssemblyName>ParameterTuner_framework</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

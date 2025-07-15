@@ -28,6 +28,9 @@ This repository contains multiple samples that demonstrates how to use the <a hr
 | [`ReadMultipleImages`](Samples/HelloWorld/ReadMultipleImages) | This sample demonstrates the simplest way to read barcodes from directory with image files and output barcode format and text. |
 | [`GeneralSettings`](Samples/GeneralSettings) | This sample demonstrates how to configure general used settings and read barcodes from an image file. |
 | [`ReadDPMBarcode`](Samples/ReadDPMBarcode) | This sample demonstrates how to read DPM (Direct Part Marking) barcodes and get barcode results. |
+| [`ParameterTuner`](Samples/ParameterTuner) | This sample demonstrates how to adjust and test different parameter settings to optimize barcode recognition performance. |
+| [`ShowLocalizedVSDecodedBarcodes`](Samples/ShowLocalizedVSDecodedBarcodes) | This sample demonstrates how to highlight successfully decoded and only-localized barcodes with different styles of rectangles. |
+| [`ServerSideBarcodeDecoder`](Samples/ServerSideBarcodeDecoder) | This sample demonstrates how to decode barcodes on the server side by sending images from a client application. |
 
 ### Additional Samples using Capture Vision SDK
 
@@ -40,6 +43,7 @@ In addition to the classic barcode decoding samples listed above, the following 
 | --- | --- |
 | [`DriverLicenseScanner`](https://github.com/Dynamsoft/capture-vision-dotnet-samples/blob/main/Samples/DriverLicenseScanner) | Shows how to capture and extract user's information from driver license/ID. |
 | [`VINScanner`](https://github.com/Dynamsoft/capture-vision-dotnet-samples/blob/main/Samples/VINScanner) | Shows how to capture and extract vehicle's information from Vehicle Identification Number (VIN). |
+| [`GS1AIScanner`](https://github.com/Dynamsoft/capture-vision-dotnet-samples/blob/main/Samples/GS1AIScanner) | Shows how to extract and interpret GS1 Application Identifiers (AIs) from GS1 barcodes. |
 
 ## License
 

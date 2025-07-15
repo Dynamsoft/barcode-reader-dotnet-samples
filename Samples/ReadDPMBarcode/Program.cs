@@ -22,7 +22,7 @@ namespace ReadDPMBarcode
                 // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=dotnet
                 errorCode = LicenseManager.InitLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", out errorMsg);
 
-                if (errorCode != (int)EnumErrorCode.EC_OK && errorCode != (int)EnumErrorCode.EC_LICENSE_CACHE_USED)
+                if (errorCode != (int)EnumErrorCode.EC_OK && errorCode != (int)EnumErrorCode.EC_LICENSE_WARNING)
                     throw new Exception("License initialization failed: ErrorCode: " + errorCode + ", ErrorString: " + errorMsg);
 
 		        // 2. Create an instance of CCaptureVisionRouter.

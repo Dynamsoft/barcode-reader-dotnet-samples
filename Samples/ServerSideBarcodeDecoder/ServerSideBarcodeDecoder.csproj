@@ -4,15 +4,12 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="packages.config" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="11.0.4000" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>

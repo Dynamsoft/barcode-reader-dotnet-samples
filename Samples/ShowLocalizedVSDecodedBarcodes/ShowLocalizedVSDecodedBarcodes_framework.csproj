@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A90EB05C-9715-4774-985E-BEC9FED7B6DD}</ProjectGuid>
+    <ProjectGuid>{2A46A29B-461C-44E1-915B-AE28EDA7D79B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GeneralSettings_framework</RootNamespace>
-    <AssemblyName>GeneralSettings_framework</AssemblyName>
+    <RootNamespace>ShowLocalizedVSDecodedBarcodes_framework</RootNamespace>
+    <AssemblyName>ShowLocalizedVSDecodedBarcodes_framework</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
