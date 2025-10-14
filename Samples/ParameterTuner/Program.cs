@@ -20,11 +20,13 @@ namespace ParameterTuner
             {
                 Console.WriteLine(
                     "\nAvailable Sample Scenarios:\n" +
-                    "[1] Blurred barcode\n" +
+                    "[1] Blurred 1D barcode\n" +
                     "[2] Multiple barcodes\n" +
                     "[3] Colour Inverted Barcode\n" +
                     "[4] Direct Part Marking\n" +
-                    "[5] Custom image\n");
+                    "[5] Retail 1D barcode\n" +
+                    "[6] Industrial 1D barcode\n" +
+                    "[7] Custom image\n");
 
                 Console.WriteLine("Enter the number of the image to test, or provide a full path to your own image:");
                 string strChoice = Console.ReadLine();
@@ -39,6 +41,10 @@ namespace ParameterTuner
                     else if (imageChoice == 4)
                         imagePath = "../../../../../Images/DPM.png";
                     else if (imageChoice == 5)
+                        imagePath = "../../../../../Images/EAN-13.jpg";
+                    else if (imageChoice == 6)
+                        imagePath = "../../../../../Images/OneDIndustrial.jpg";
+                    else if (imageChoice == 7)
                     {
                         Console.WriteLine("Please enter the full path to your custom image:");
                         imagePath = Console.ReadLine();
@@ -71,10 +77,12 @@ namespace ParameterTuner
             string firstTemplateDescription = null;
             switch (imageChoice)
             {
-                case 1: firstTemplateDescription = "[1] ReadBlurryBarcode.json  (Suitable for blurred barcode)"; break;
+                case 1: firstTemplateDescription = "[1] ReadBlurry1DBarcode.json  (Suitable for blurred 1D barcode)"; break;
                 case 2: firstTemplateDescription = "[1] ReadMultipleBarcode.json  (Suitable for multiple barcodes)"; break;
                 case 3: firstTemplateDescription = "[1] ReadInvertedBarcode.json  (Suitable for colour inverted barcode)"; break;
                 case 4: firstTemplateDescription = "[1] ReadDPM.json  (Suitable for Direct Part Marking barcode)"; break;
+                case 5: firstTemplateDescription = "[1] ReadOneDRetail.json  (Suitable for retail 1D barcode such as EAN13, UPC-A)"; break;
+                case 6: firstTemplateDescription = "[1] ReadOneDIndustrial.json  (Suitable for industrial 1D barcode such as Code128, Code39)"; break;
                 default: firstTemplateDescription = null; break;
             }
 
@@ -95,10 +103,12 @@ namespace ParameterTuner
                     {
                         switch (imageChoice)
                         {
-                            case 1: templatePath = "../../../../../CustomTemplates/ReadBlurryBarcode.json"; break;
+                            case 1: templatePath = "../../../../../CustomTemplates/ReadBlurry1DBarcode.json"; break;
                             case 2: templatePath = "../../../../../CustomTemplates/ReadMultipleBarcode.json"; break;
                             case 3: templatePath = "../../../../../CustomTemplates/ReadInvertedBarcode.json"; break;
                             case 4: templatePath = "../../../../../CustomTemplates/ReadDPM.json"; break;
+                            case 5: templatePath = "../../../../../CustomTemplates/ReadOneDRetail.json"; break;
+                            case 6: templatePath = "../../../../../CustomTemplates/ReadOneDIndustrial.json"; break;
                             default: templatePath = ""; break;
                         }
                     }

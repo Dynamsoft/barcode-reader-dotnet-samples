@@ -124,8 +124,21 @@ namespace ShowLocalizedVSDecodedBarcodes
                     ImageData image = imageIO.ReadFromFile(imagePath, out errorCode);
                     if (errorCode == (int)EnumErrorCode.EC_OK)
                     {
+                        cvRouter.GetSimplifiedSettings(PresetTemplate.PT_READ_BARCODES, out SimplifiedCaptureVisionSettings settings);
+                        settings.outputOriginalImage = 1;
+                        cvRouter.UpdateSettings(PresetTemplate.PT_READ_BARCODES, settings);
+
                         // 5. Decode barcodes from the image.
                         CapturedResult result = cvRouter.Capture(image, PresetTemplate.PT_READ_BARCODES);
+
+                        foreach (CapturedResultItem capturedResultItem in result.GetItems())
+                        {
+                            if (capturedResultItem is OriginalImageResultItem originalImageResultItem)
+                            {
+                                image = originalImageResultItem.GetImageData();
+                                break;
+                            }
+                        }
 
                         // 6. Check error code.
                         if (result.GetErrorCode() == (int)EnumErrorCode.EC_UNSUPPORTED_JSON_KEY_WARNING)
