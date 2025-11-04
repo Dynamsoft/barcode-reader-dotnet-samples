@@ -243,16 +243,19 @@ namespace ParameterTuner
                                 else if (result.GetErrorCode() != (int)EnumErrorCode.EC_OK)
                                     Console.WriteLine("Error: " + result.GetErrorCode() + ", " + result.GetErrorString());
 
+                                FileImageTag tag = result.GetOriginalImageTag() as FileImageTag;
+                                int pageNumber = tag != null ? tag.GetPageNumber() : index;
+
                                 // 5. Output the barcode format and barcode text.
                                 DecodedBarcodesResult barcodeResult = result.GetDecodedBarcodesResult();
                                 BarcodeResultItem[] items = barcodeResult != null ? barcodeResult.GetItems() : null;
                                 if (items == null || items.Length == 0)
                                 {
-                                    Console.WriteLine("Page-" + (index + 1) + " No barcode found.");
+                                    Console.WriteLine("Page-" + (pageNumber + 1) + " No barcode found.");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Page-" + (index + 1) + " Decoded " + items.Length + " barcodes.");
+                                    Console.WriteLine("Page-" + (pageNumber + 1) + " Decoded " + items.Length + " barcodes.");
                                     for (int i = 0; i < items.Length; i++)
                                     {
                                         Console.WriteLine("Result " + (i + 1));

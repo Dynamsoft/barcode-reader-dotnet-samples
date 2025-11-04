@@ -76,17 +76,25 @@ namespace GeneralSettings
                             else if (result.GetErrorCode() != (int)EnumErrorCode.EC_OK)
                                 Console.WriteLine("Error: " + result.GetErrorCode() + "," + result.GetErrorString());
 
+                            FileImageTag tag = result.GetOriginalImageTag() as FileImageTag;
+                            int pageNumber = tag != null ? tag.GetPageNumber() : index;
+
                             // 6. Output the barcode text.
                             DecodedBarcodesResult barcodeResult = result.GetDecodedBarcodesResult();
                             if (barcodeResult == null || barcodeResult.GetItems().Length == 0)
-                                Console.WriteLine("Page-" + (index + 1) + " No barcode detected.");
-                            BarcodeResultItem[] items = barcodeResult.GetItems();
-                            Console.WriteLine("Page-" + (index + 1) + " Decoded " + items.Length + " barcodes.");
-                            for (int i = 0; i < items.Length; i++)
                             {
-                                Console.WriteLine("Result " + (i + 1));
-                                Console.WriteLine("Barcode Format: " + items[i].GetFormatString());
-                                Console.WriteLine("Barcode Text: " + items[i].GetText());
+                                Console.WriteLine("Page-" + (pageNumber + 1) + " No barcode detected.");
+                            }
+                            else
+                            {
+                                BarcodeResultItem[] items = barcodeResult.GetItems();
+                                Console.WriteLine("Page-" + (pageNumber + 1) + " Decoded " + items.Length + " barcodes.");
+                                for (int i = 0; i < items.Length; i++)
+                                {
+                                    Console.WriteLine("Result " + (i + 1));
+                                    Console.WriteLine("Barcode Format: " + items[i].GetFormatString());
+                                    Console.WriteLine("Barcode Text: " + items[i].GetText());
+                                }
                             }
                         }
                     }

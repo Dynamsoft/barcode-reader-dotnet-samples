@@ -47,15 +47,19 @@ namespace ReadAnImage
                             {
                                 Console.WriteLine("Error: " + result.GetErrorCode() + ", " + result.GetErrorString());
                             }
+
+                            FileImageTag tag = result.GetOriginalImageTag() as FileImageTag;
+                            int pageNumber = tag != null ? tag.GetPageNumber() : index;
+
                             DecodedBarcodesResult barcodesResult = result.GetDecodedBarcodesResult();
                             BarcodeResultItem[] items = barcodesResult != null ? barcodesResult.GetItems() : null;
                             if (items == null || items.Length == 0)
                             {
-                                Console.WriteLine("Page-" + (index + 1) + " No barcode detected.");
+                                Console.WriteLine("Page-" + (pageNumber + 1) + " No barcode detected.");
                             }
                             else
                             {
-                                Console.WriteLine("Page-" + (index + 1) + " Decoded " + items.Length + " barcodes");
+                                Console.WriteLine("Page-" + (pageNumber + 1) + " Decoded " + items.Length + " barcodes");
                                 for (int i = 0; i < items.Length; i++)
                                 {
                                     BarcodeResultItem barcodeResultItem = items[i];
