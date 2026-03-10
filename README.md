@@ -18,7 +18,6 @@ This repository contains multiple samples that demonstrates how to use the <a hr
 | [`HelloWorld`](samples/HelloWorld) | This sample demonstrates the simplest way to read barcodes from an image file. |
 | [`GeneralSettings`](samples/GeneralSettings) | This sample demonstrates how to configure general settings and read barcodes from an image file. |
 | [`ProcessDocumentsByBarcodes`](samples/UseCases/ProcessDocumentsByBarcodes) | This sample demonstrates how to renaming, splitting or classifying a batch of documents using barcodes result. |
-| [`DecodeFromScannerAndWebcam`](samples/UseCases/DecodeFromScannerAndWebcam) | This sample demonstrates how to read barcodes from scanner, webcam and local files. |
 | [`ImageDecoding`](samples/ImageDecoding) | This sample demonstrates how to decode images in various format (including Disk File/File Bytes in Memory/Raw Buffer/Base64 String/Bitmap) when using Dynamsoft Barcode Reader. |
 | [`SpeedFirstSettings`](samples/Performance/SpeedFirstSettings) | This sample demonstrates how to configure Dynamsoft Barcode Reader to read barcodes as fast as possible. The downside is that read-rate and accuracy might be affected. |
 | [`ReadRateFirstSettings`](samples/Performance/ReadRateFirstSettings) | This sample demonstrates how to configure Dynamsoft Barcode Reader to read as many barcodes as possible at one time. The downside is that speed and accuracy might be affected. It is recommended to apply these configurations when decoding multiple barcodes from a single image. |
