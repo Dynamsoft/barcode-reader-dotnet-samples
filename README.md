@@ -31,6 +31,7 @@ This repository contains multiple samples that demonstrates how to use the <a hr
 | [`ParameterTuner`](Samples/ParameterTuner) | This sample demonstrates how to adjust and test different parameter settings to optimize barcode recognition performance. |
 | [`ShowLocalizedVSDecodedBarcodes`](Samples/ShowLocalizedVSDecodedBarcodes) | This sample demonstrates how to highlight successfully decoded and only-localized barcodes with different styles of rectangles. |
 | [`ServerSideBarcodeDecoder`](Samples/ServerSideBarcodeDecoder) | This sample demonstrates how to decode barcodes on the server side by sending images from a client application. |
+| [`VideoDecoding`](Samples/VideoDecoding) | This sample demonstrates how to read barcodes from video frames. |
 
 ### Additional Samples using Capture Vision SDK
 
