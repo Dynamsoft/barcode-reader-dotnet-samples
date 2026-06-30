@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoDecoding", "VideoDecoding.csproj", "{257FD736-19B3-4ED7-BF0F-5B56EC8EFB0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{257FD736-19B3-4ED7-BF0F-5B56EC8EFB0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{257FD736-19B3-4ED7-BF0F-5B56EC8EFB0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{257FD736-19B3-4ED7-BF0F-5B56EC8EFB0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{257FD736-19B3-4ED7-BF0F-5B56EC8EFB0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21BB9E31-A0A3-4F37-89F8-5F594F120EF6}
+	EndGlobalSection
+EndGlobal
