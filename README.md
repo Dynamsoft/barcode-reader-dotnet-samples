@@ -4,19 +4,21 @@ This repository contains multiple samples that demonstrates how to use the <a hr
 
 ## System Requirements
 
-- Windows:
-  - Supported Versions: Windows 8 and higher, or Windows Server 2012 and higher
-  - Architecture: x64 and x86
-  - Development Environment: Visual Studio 2012 or higher.
+### Supported Platforms
 
-- Linux:
-  - Supported Distributions: Ubuntu 14.04.4+ LTS, Debian 8+, CentOS 7+
-  - Architectures: x64
-  - Minimum GLIBC Version: GLIBC_2.18 or higher
+**Windows**
+- Supported Versions: Windows 8 and higher, or Windows Server 2012 and higher
+- Architectures: x64, x86
 
-- Supported .NET versions
-  - .NET Framework 3.5 and above
-  - .NET 6, 7, 8
+**Linux**
+- Supported Distributions: Ubuntu 16.04+ LTS, Debian 8+, CentOS 7+
+- Architectures: x64
+- Dependencies: glibc 2.17 or higher
+
+### Runtime Environment
+
+- .NET Framework 3.5 and above
+- .NET 6, 7, 8, 9, 10
 
 ## Samples
 
@@ -27,10 +29,11 @@ This repository contains multiple samples that demonstrates how to use the <a hr
 | [`ReadAnImage`](Samples/HelloWorld/ReadAnImage) | This sample demonstrates the simplest way to read barcodes from an image file and output barcode format and text. |
 | [`ReadMultipleImages`](Samples/HelloWorld/ReadMultipleImages) | This sample demonstrates the simplest way to read barcodes from directory with image files and output barcode format and text. |
 | [`GeneralSettings`](Samples/GeneralSettings) | This sample demonstrates how to configure general used settings and read barcodes from an image file. |
-| [`ReadDPMBarcode`](Samples/ReadDPMBarcode) | This sample demonstrates how to read DPM (Direct Part Marking) barcodes and get barcode results. |
+| [`GridBarcodeScanner`](Samples/GridBarcodeScanner) | This sample demonstrates a multi-phase pipeline for decoding a large barcode grid from a single image, maximizing the decode rate with low latency. |
 | [`ParameterTuner`](Samples/ParameterTuner) | This sample demonstrates how to adjust and test different parameter settings to optimize barcode recognition performance. |
-| [`ShowLocalizedVSDecodedBarcodes`](Samples/ShowLocalizedVSDecodedBarcodes) | This sample demonstrates how to highlight successfully decoded and only-localized barcodes with different styles of rectangles. |
+| [`ReadDPMBarcode`](Samples/ReadDPMBarcode) | This sample demonstrates how to read DPM (Direct Part Marking) barcodes and get barcode results. |
 | [`ServerSideBarcodeDecoder`](Samples/ServerSideBarcodeDecoder) | This sample demonstrates how to decode barcodes on the server side by sending images from a client application. |
+| [`ShowLocalizedVSDecodedBarcodes`](Samples/ShowLocalizedVSDecodedBarcodes) | This sample demonstrates how to highlight successfully decoded and only-localized barcodes with different styles of rectangles. |
 | [`VideoDecoding`](Samples/VideoDecoding) | This sample demonstrates how to read barcodes from video frames. |
 
 ### Additional Samples using Capture Vision SDK
