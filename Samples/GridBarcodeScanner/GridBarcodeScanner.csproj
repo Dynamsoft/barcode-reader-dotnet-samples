@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="11.6.1000" />
+    <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="11.6.3000" />
     <PackageReference Include="OpenCvSharp4" Version="4.13.0.20260427" />
   </ItemGroup>
     <!-- Windows -->
