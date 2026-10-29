@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="11.6.4000" />
+    <PackageReference Include="Dynamsoft.DotNet.BarcodeReader.Bundle" Version="11.6.5000" />
     <PackageReference Include="OpenCvSharp4" Version="4.13.0.20260427" />
   </ItemGroup>
     <!-- Windows -->
@@ -28,7 +28,7 @@
   <ItemGroup Condition="$(RuntimeIdentifier) == '' And $([MSBuild]::IsOSPlatform('Linux'))">
     <PackageReference Include="OpenCvSharp4.official.runtime.linux-x64" Version="4.13.0.20260627" />
   </ItemGroup>
-  
+
   <ItemGroup Condition="$(RuntimeIdentifier.StartsWith('linux')) And $(RuntimeIdentifier.Contains('arm'))">
     <PackageReference Include="OpenCvSharp4.runtime.linux-arm" Version="4.13.0.20260627" />
   </ItemGroup>
